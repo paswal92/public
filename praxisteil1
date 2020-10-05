@@ -1,0 +1,107 @@
+import java.util.Random;
+import java.util.Scanner;
+
+public class Kopfrechnen {
+
+   public static void main(String[] args) {
+      Scanner keyScan = new Scanner(System.in);
+      Random rn = new Random();
+      
+      System.out.println("Willkommen zum Kopfrechnen!");
+      System.out.println("Ich stelle dir nun 5 Rechenaufgaben, welche du lösen sollst.");
+             
+      int counter = 0;
+      int richtig = 0;
+      
+      // Operator wechsel als option? Wie beim würfel game das wir gemacht haben ind DSF
+     
+      
+      
+      while (counter <= 4) {
+    	  int zahl1 = rn.nextInt(10);
+          int zahl2 = rn.nextInt(10);
+          int loesung = zahl1 + zahl2;
+    	  
+    	  System.out.println("Was gibt " + zahl1 + "+" + zahl2 + "?");
+    	  int ergebniss = keyScan.nextInt();
+    	  
+    	  if (ergebniss == loesung) {
+    		  System.out.println("Richtig!");
+    		  richtig++;
+    		  counter++;
+    	  }
+    	  else {
+    		  System.out.println("Falsch! Die Richtige Antwort wäre: " + loesung);
+    		  counter++;
+    	  }
+    	  
+      }
+      if (richtig == 0) {
+    	  System.out.println("Du hast " + richtig + " von 5 Aufgaben Richtig gelöst!");
+    	  System.out.println("Eieiei, das ging in die Hose! Das kannst du besser! Probier gleich nochmals");  
+      }
+      else if (richtig >0 && richtig <5) {
+    	  System.out.println("Du hast " + richtig + " von 5 Aufgaben Richtig gelöst!");
+    	  System.out.println("Wow super, fast alle richtig! Schaffst du auch alle?"); 
+      }
+      else {
+    	  System.out.println("Du hast " + richtig + " von 5 Aufgaben Richtig gelöst!");
+    	  System.out.println("Du bist ein richtiger Profi Lass uns den Zahlenraum auf 0-20 erweitern okay? Ja = 1, Nein = 2 ");
+    	  int antwort = keyScan.nextInt();
+    	  
+    	  
+    	  // Eingabe checken?? Wie kann ich mit Ja und Nein die if clause auslösen --> nicht mit 1 oder 2?
+    	  
+    			  
+    	  if (antwort == 2) {
+    		  System.out.println("Okay, vieleicht ein anderes Mal!");
+    		  
+    	  }
+    	  else {
+    		  int counter2 = 0;
+    	      int richtig2 = 0;
+    	      
+    	      while (counter2 <= 4) {
+    	    	  int zahl1 = rn.nextInt(20);
+    	          int zahl2 = rn.nextInt(20);
+    	          int loesung2 = zahl1 + zahl2;
+    	    	  
+    	    	  System.out.println("Was gibt " + zahl1 + "+" + zahl2 + "?");
+    	    	  int ergebniss2 = keyScan.nextInt();
+    	    	  
+    	    	  if (ergebniss2 == loesung2) {
+    	    		  System.out.println("Richtig!");
+    	    		  richtig2++;
+    	    		  counter2++;
+    	    	  }
+    	    	  else {
+    	    		  System.out.println("Falsch! Die Richtige Antwort wäre: " + loesung2);
+    	    		  counter2++;
+    	    	  }
+    	    	  
+    	      }
+    	      int endresultat = richtig + richtig2;
+    	      if (endresultat == 5) {
+    	    	  System.out.println("Du hast " + endresultat + " von 10 Aufgaben Richtig gelöst!");
+    	    	  System.out.println("Eieiei, das ging in die Hose! Das kannst du besser! Probier gleich nochmals");  
+    	      }
+    	      else if (endresultat >5 && endresultat <10) {
+    	    	  System.out.println("Du hast " + endresultat + " von 10 Aufgaben Richtig gelöst!");
+    	    	  System.out.println("Wow super, fast alle richtig! Schaffst du auch alle?"); 
+    	      }
+    	      else {
+    	    	  System.out.println("Du hast " + endresultat + " von 10 Aufgaben Richtig gelöst!");
+    	    	  System.out.println("Du bist ein absoluter Profi!");
+    	  }
+    	  
+    	  
+    	      	  
+      }
+      
+  
+  
+      keyScan.close();
+   }
+   }   
+}
+   

@@ -41,17 +41,15 @@ public class Kopfrechnen {
       }
       else {
     	  System.out.println("Du hast " + richtig + " von 5 Aufgaben Richtig gelöst!");
-    	  System.out.println("Du bist ein richtiger Profi Lass uns den Zahlenraum auf 0-20 erweitern okay? Für Ja tippe 1, für Nein tippe 2:");
-    	  int antwort = keyScan.nextInt();
+    	  System.out.println("Du bist ein richtiger Profi Lass uns den Zahlenraum auf 0-20 erweitern okay?");
+    	  System.out.println("Ja = wir machen weiter, Nein = wir machen nicht weiter)");
     	  
-    	  // Eingabe checken?? Wie kann ich mit Ja und Nein die if clause auslösen --> nicht mit 1 oder 2?
-    	  //Etwa so:
-    	  //System.out.println("Du bist ein richtiger Profi Lass uns den Zahlenraum auf 0-20 erweitern okay? ");
-    	  //int antwort = keyScan.nextLine();
-    	  //if (antwort == "Nein"){
+    	  String antwort = keyScan.next();
     	  
-    			  
-    	  if (antwort == 2) {
+    	  String yes = "Ja";
+    	  String no = "Nein";
+    	  
+    	  if (antwort.equals(no)) {
     		  System.out.println("Okay, vieleicht ein anderes Mal!");
     	  }
     	  else {

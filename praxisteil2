@@ -17,24 +17,21 @@ public class TicTacToe {
 		while (counter < 9 ) { 
 			if (!spielerX) {
 				System.out.print("SpielerIn O: ");
-				Scanner keyScan2 = new Scanner(System.in);
-				int position1 =keyScan2.nextInt();
-				counter++;
-				position1 = position;
+				position =keyScan.nextInt();
+				counter++;			
 				spielerX = true;
 			}
 			else {
 				System.out.print("SpielerIn X: ");
-				Scanner keyScan2 = new Scanner(System.in);
-				int position1 =keyScan2.nextInt();
+				position =keyScan.nextInt();
 				counter++;
-				position1 = position;
 				spielerX = false;
 			}
 			System.out.println("Zeile: "+getZeile(position)+", Spalte: "+getSpalte(position));
 								  
 		}
-				
+		speichere(position, spielerX);
+		printSpielfeld();		
 		
 		keyScan.close();
 	}
@@ -52,30 +49,27 @@ public class TicTacToe {
 	static void speichere(int position, boolean spielerX) {
 		// TODO
 	}
-	// Die eingegebenen Zahlen (1-9) müssen für den Zugriff auf das Spielfeld in Zeilen (0-2) und Spalten (0-2) übersetzt werden. 
-  // Dazu sollen die Methoden getZeile(..) und getSpalte(..) verwendet werden. 
-  //Beide Methoden erhalten eine Position (1-9) als Input und sollen die entsprechende Zeilen- respektive Spaltennummer zurückgeben. 
-  //Die Zeilen return 0; müssen entfernt werden. Diese waren nur dazu da, dass sich das Programm ohne Fehler ausführen liess.
-  
+	
 	static int getZeile(int position) {
-		for (int i=0; i<9; i++) {
-			if (i=1/ 3 /7)){
-				return 0;				
-			}
-			else if (i=2/ 4 /8) {
-				return 1;
-			}
-			else {
-				return 2;
-			}
+		if (position ==1 || position ==4 || position ==7) {
+			return 0;
+		}
+		else if (position ==2 || position ==5 || position ==8) {
+			return 1;
 		}
 		
-			
+			return 2;
 	}
 	
 	static int getSpalte(int position) {
-		// TODO
-		return 5;
+		
+		if (position <=3) {
+			return 0;
+		}
+		else if (position <= 6 && position >=4 ) {
+			return  1;
+		}
+			return 2;
 	}
 	
 	static char getSymbol(boolean spielerX) {

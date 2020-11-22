@@ -27,11 +27,17 @@ public class TicTacToe {
 				counter++;
 				spielerX = false;
 			}
-			System.out.println("Zeile: "+getZeile(position)+", Spalte: "+getSpalte(position));
-								  
+			// Wertebereich checken
+			if (0>=position  || position>=10)  {
+				counter--;
+				spielerX = true;
+				System.out.println("Ouuu! Dein Wert muss zwischen 1-9 liegen, bitte wiederhole deine Eingabe.");
+			}
+			else {
+				speichere(position, spielerX);
+				printSpielfeld();
+			}							  
 		}
-		speichere(position, spielerX);
-		printSpielfeld();		
 		
 		keyScan.close();
 	}
@@ -47,9 +53,9 @@ public class TicTacToe {
 	}
 	
 	static void speichere(int position, boolean spielerX) {
-		// TODO
+		spielfeld[getSpalte(position)][getZeile(position)] = getSymbol(spielerX);
 	}
-	
+
 	static int getZeile(int position) {
 		if (position ==1 || position ==4 || position ==7) {
 			return 0;
@@ -86,5 +92,9 @@ public class TicTacToe {
 			}
 			System.out.println("");
 		}
+	}
+	static boolean hatGewonnen(boolean spielerX) {
+		
+		// TODO
 	}
 }

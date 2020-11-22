@@ -26,24 +26,43 @@ public class TicTacToe {
 				spielerX = false;
 			}
 
+			// Wert besezt
 			if (spielfeld[getSpalte(position)][getZeile(position)] == 'X'
 					|| spielfeld[getSpalte(position)][getZeile(position)] == 'O') {
 				counter--;
-				spielerX = true;
-				System.out.println("Dieses Feld ist schon besetzt, bitte wiederhole deine Eingabe.");
+				spielerX = !spielerX;
+				System.out.println("Dieses Feld ist schon besetzt, bitte wiederhole deine Eingabe!");
 				printSpielfeld();
 				continue;
+
 			}
 
+			// Wert auserhalb
 			if (0 >= position || position >= 10) {
 				counter--;
-				spielerX = true;
+				spielerX = !spielerX;
 				System.out.println(
-						"Das geht so nicht! Dein Wert muss zwischen 1-9 liegen, bitte wiederhole deine Eingabe.");
+						"Das geht so nicht! Dein Wert muss zwischen 1-9 liegen, bitte wiederhole deine Eingabe!");
+				printSpielfeld();
+				continue;
 			} else {
 				speichere(position, spielerX);
 				printSpielfeld();
 			}
+
+			// Gewinner ausgeben
+			if (hatGewonnen(spielerX)) {
+				System.out.print("Spieler X hat gewonnen!");
+				break;
+			}
+			if (hatGewonnen(!spielerX)) {
+				System.out.print("Spieler O hat gewonnen!");
+				continue;
+			}
+
+		}
+		if (counter == 9) {
+			System.out.print("Unentschieden!");
 		}
 
 		keyScan.close();
@@ -100,6 +119,31 @@ public class TicTacToe {
 	}
 
 	static boolean hatGewonnen(boolean spielerX) {
-		// TODO
+		spielerX = false;
+		for (int i = 0; i < 3; i++) {
+			if (spielfeld[i][0] == spielfeld[i][1] && spielfeld[i][1] == spielfeld[i][2] && spielfeld[i][0] != '.') {
+				spielerX = true;
+				return spielerX;
+			}
+		}
+		spielerX = false;
+		for (int j = 0; j < 3; j++) {
+			if (spielfeld[0][j] == spielfeld[1][j] && spielfeld[1][j] == spielfeld[2][j] && spielfeld[0][j] != '.') {
+				spielerX = true;
+				return spielerX;
+			}
+		}
+		spielerX = false;
+		if (spielfeld[0][0] == spielfeld[1][1] && spielfeld[1][1] == spielfeld[2][2] && spielfeld[0][0] != '.') {
+			spielerX = true;
+			return spielerX;
+		}
+		spielerX = false;
+		if (spielfeld[2][0] == spielfeld[1][1] && spielfeld[1][1] == spielfeld[0][2] && spielfeld[2][0] != '.') {
+			spielerX = true;
+			return spielerX;
+		}
+		return spielerX;
 	}
+
 }
